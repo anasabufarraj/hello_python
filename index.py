@@ -1,7 +1,6 @@
 #! /usr/local/bin/python3.6
 # Copyright 2018. Anas Abu Farraj.
 
-
 class Egg:
     # Initial Constructors
     def __init__(self, kind="Fried"):
