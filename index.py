@@ -1,5 +1,5 @@
-#! /usr/local/bin/python3.6
-# Copyright 2018. Anas Abu Farraj.
+# Copyright 2019. Anas Abu Farraj
+# Learning Python
 
 
 class Egg:
@@ -11,10 +11,6 @@ class Egg:
         return self.kind
 
 
-
-
-
-
 def main():
     fried = Egg()  # Use default value "Fried"
     scrambled = Egg("Scrambled")
@@ -22,16 +18,14 @@ def main():
     print(scrambled.what_kind())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
 
+
 # TODO: Study this example
-
-
 class Door:
     def open(self):
-        print('Hello stranger')
-        print('Hola')
+        print("Hello stranger")
 
 
 def knock_door():

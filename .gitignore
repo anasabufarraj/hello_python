@@ -1,3 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 /.idea
+/.vscode
+.DS_Store
 hello_python.iml

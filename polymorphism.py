@@ -1,24 +1,24 @@
 # -- VIEW --
 class AnimalActions:
     def bark(self):
-        return self._doAction('bark')
+        return self._do_action('bark')
 
     def fur(self):
-        return self._doAction('fur')
+        return self._do_action('fur')
 
     def quack(self):
-        return self._doAction('quack')
+        return self._do_action('quack')
 
     def feathers(self):
-        return self._doAction('feathers')
+        return self._do_action('feathers')
 
-    def _doAction(self, action):
+    def _do_action(self, action):
         if action in self.strings:
             return self.strings[action]
         else:
-            return 'The {} has no {}'.format(self.animalName(), action)
+            return 'The {} has no {}'.format(self.animal_name(), action)
 
-    def animalName(self):
+    def animal_name(self):
         return self.__class__.__name__.lower()
 
 
