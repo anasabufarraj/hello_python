@@ -21,11 +21,13 @@ def main():
 if __name__ == '__main__':
     main()
 
-
 # TODO: Study this example
+
+
 class Door:
     def open(self):
         print('Hello stranger')
+        print('Hola')
 
 
 def knock_door():
