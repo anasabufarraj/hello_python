@@ -2,17 +2,11 @@
 # Copyright 2019. Anas Abu Farraj
 """ Python Learning Project """
 
-import time
 
-try:
-    with open('files/filename.txt', 'r') as src:
-        FILE_DATA = src.read()
-        """ writing text data to file """
-        with open('files/file_new.txt', 'w') as dist:
-            dist.write(FILE_DATA + '\n...done\n')
+# This function slows down program execution for some reason.
+def square(num):
+    """ Return the square of self times self. """
+    return num**num
 
-except FileNotFoundError:
-    print('File not found')
 
-for items in dir(time):
-    print(items.strip('\n'))
+help(square)
