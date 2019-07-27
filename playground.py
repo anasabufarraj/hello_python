@@ -7,6 +7,3 @@
 def square(num):
     """ Return the square of self times self. """
     return num**num
-
-
-help(square)
