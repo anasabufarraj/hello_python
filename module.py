@@ -1,5 +1,5 @@
-#!/usr/local/bin/python3
-# Copyright 2019. Anas Abu Farraj
+#!./venv/bin/python3
+# # Copyright 2019. Anas Abu Farraj
 """ functions module """
 
 

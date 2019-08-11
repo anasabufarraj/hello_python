@@ -1,8 +1,9 @@
-#!/usr/local/bin/python3
-# Copyright 2019. Anas Abu Farraj
+#!./venv/bin/python3
+# # Copyright 2019. Anas Abu Farraj
 
 
 class Egg:
+
     # Initial Constructors
     def __init__(self, kind="Fried"):
         self.kind = kind
@@ -22,7 +23,6 @@ if __name__ == "__main__":
     main()
 
 
-# TODO: Study this example
 class Door:
     def open(self):
         print("Hello stranger")
