@@ -1,7 +1,6 @@
 #!./venv/bin/python3
 # # Copyright 2019. Anas Abu Farraj
 
-
 class Egg:
 
     # Initial Constructors
