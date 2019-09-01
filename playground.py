@@ -1,22 +1,22 @@
 #!./venv/bin/python3.7
 # Copyright 2019. Anas Abu Farraj
 
-# is_designer = True
-# is_developer = False
-# is_learner = True
+is_designer = True
+is_developer = False
+is_learner = True
 
-# # Accept the guy if he designer and developer, or a lerner.
-# is_accepted = is_designer and is_developer or is_learner
+# Accept the guy if designer and developer, or a lerner.
+is_accepted = is_designer and is_developer or is_learner
 
-# print(is_accepted)  # True
+print(is_accepted)  # True
 
-from collections import deque
 
-queue = deque(['Eric', 'John', 'Michael'])
-queue.append('Terry')  # Terry arrives
-queue.append('Graham')  # Graham arrives
+# ---------------------------------------------------------
+def length(n):
+    return len(n)
 
-print(queue.popleft())  # 'Eric' first to arrive now leaves
-print(queue.popleft())  # 'John' second to arrive now leaves
 
-print(queue)  # deque(['Michael', 'Terry', 'Graham'])
+items = 'apple', 'orange', 'pear', 'orange', 'banana'
+length_list = list(x for x in map(length, items))
+
+print(length_list)  # [5, 6, 4, 6, 6]
