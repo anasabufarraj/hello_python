@@ -3,11 +3,13 @@
 
 
 # class Hello:
-def say_hello(name):
+def __say_hello__(name):
     """ Say Hello to 'name' """
     print(f'Hello, {name}!')
 
 
-if __name__ == '__main__':
+__name__ = '__module__'
+
+if __name__ == '__module__':
     # True only if the module run as main script.
-    print('Hello from "module.py"')
+    print('Hello main script...')
