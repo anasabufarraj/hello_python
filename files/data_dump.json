@@ -1,0 +1,6 @@
+{
+    "description": "learning jQuery",
+    "main": "index.html",
+    "name": "hello_jquery",
+    "version": "1.0.0"
+}
