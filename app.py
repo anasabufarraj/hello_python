@@ -10,7 +10,7 @@ Tasks:
 [x]: Show a user interface and get user input
 [x]: Allow user to add movies
 [x]: List all movies to user
-[ ]: Find a movie
+[x]: Find a movie
 [x]: Allow the user to stop running the program
 
 """
@@ -18,7 +18,6 @@ Tasks:
 
 def menu():
     """Show a user interface and get user input."""
-
     user_message = "\nEnter 'a' to add movie, " \
                    "'l' to list movie, " \
                    "'f' to find movie, " \
@@ -42,8 +41,7 @@ def menu():
 
 
 def add_movie():
-    """Add a movie to a list"""
-
+    """Add a movie to a list."""
     movie_name = input('Enter movie name: ')
     movie_director = input('Enter director: ')
     movie_year = input('Enter movie year: ')
@@ -56,7 +54,6 @@ def add_movie():
 
 def list_movie():
     """List all stored movies in the list."""
-
     for movie in MOVIES:
         print(
             f"{movie['name']} ({movie['year']}) - Director by '{movie['director']}'"
@@ -68,7 +65,6 @@ def list_movie():
 
 def find_movie():
     """Finds a movie."""
-
     keyword = input('Enter the movie detail: ').casefold()
     for movie in MOVIES:
         found = [
@@ -83,16 +79,19 @@ def find_movie():
     print('Not found')
 
 
-MOVIES = [{
-    'name': 'Harry Potter',
-    'director': 'David Fischer',
-    'year': '2008'
-}, {
-    'name': 'The matrix',
-    'director': 'Peter David',
-    'year': '1998'
-}]
+MOVIES = []
 
 if __name__ == '__main__':
+    # Initial stored movies for testing.
+    MOVIES = [{
+        'name': 'Harry Potter',
+        'director': 'David Fischer',
+        'year': '2008'
+    }, {
+        'name': 'The matrix',
+        'director': 'Peter David',
+        'year': '1998'
+    }]
+
     list_movie()
     menu()

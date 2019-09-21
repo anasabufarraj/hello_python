@@ -2,6 +2,6 @@
 # Copyright 2019. Anas Abu Farraj
 # Learning Python
 
-a = [1, 2, 3]
+import app
 
-print(any(a))
+app.menu()
