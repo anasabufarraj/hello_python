@@ -2,6 +2,17 @@
 # Copyright 2019. Anas Abu Farraj
 # Learning Python
 
-import app
+template = """
+From: <{from_email}>
+To: <{to_email}>
+Subject: {subject}
 
-app.menu()
+{message}
+"""
+
+print(
+    template.format(from_email="sender@domain.com",
+                    to_email="recipient@domain.com",
+                    subject="Hello!",
+                    message="Here's some mail for you. "
+                    " Hope you enjoy the message!"))
