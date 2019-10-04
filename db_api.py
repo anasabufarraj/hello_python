@@ -9,13 +9,13 @@ __version__ = '1.2.0'
 class bwDB:
     def __init__(self, **kwargs):
         """
-            db = bwDB( [ table = ''] [, filename = ''] )
+            db = bwDB( [ table = ''] [, filename.txt = ''] )
             constructor method
                 table is for CRUD methods
-                filename is for connecting to the database file
+                filename.txt is for connecting to the database file
         """
-        # see filename @property decorators below
-        self._filename = kwargs.get('filename')
+        # see filename.txt @property decorators below
+        self._filename = kwargs.get('filename.txt')
         self._table = kwargs.get('table', '')
 
     def set_table(self, tablename):
@@ -163,7 +163,7 @@ class bwDB:
         c = self._db.execute(query)
         return c.fetchone()[0]
 
-    # filename property
+    # filename.txt property
     @property
     def _filename(self):
         return self._dbfilename
