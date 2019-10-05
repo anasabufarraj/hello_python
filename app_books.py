@@ -47,7 +47,12 @@ def add_book():
 
 def list_books():
     """Show all books in the database."""
-    print(database.get_all_books())
+    books = database.get_all_books()
+    for n, book in enumerate(books, 1):
+        state = 'YES' if book['read'] != '1' else 'NO'
+        print(
+            f"{[n]} - {book['name'].capitalize()} by {book['author'].capitalize()} — Read: {state}"
+        )
 
 
 def mark_as_read():
