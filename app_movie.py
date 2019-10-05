@@ -54,13 +54,13 @@ def add_movie():
 
 def list_movie():
     """List all stored movies in the list."""
+    if not MOVIES:
+        print('No stored movies yet')
+
     for movie in MOVIES:
         print(
             f"{movie['name']} ({movie['year']}) - Director by '{movie['director']}'"
         )
-
-    if not MOVIES:
-        print('No stored movies yet')
 
 
 def find_movie():

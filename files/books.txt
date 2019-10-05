@@ -1,0 +1,3 @@
+book1,auhtor1,0
+book2,author2,0
+book3,author3,0
