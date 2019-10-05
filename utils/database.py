@@ -2,11 +2,11 @@
 # Copyright 2019. Anas Abu Farraj
 """Storing and retrieving books from a list."""
 
-BOOKS_FILE = 'files/books.txt'
+BOOKS = []
 
 
 def add_book(name, author):
-    """Append book with name and author to file.
+    """Append book with name and author to list.
     
     :param name: book name
     :type name: string
@@ -14,30 +14,16 @@ def add_book(name, author):
     :param author: author's name
     :type author: string
     """
-    with open(BOOKS_FILE, 'a') as file:
-        file.write(f'{name},{author},0\n')
-    # BOOKS.append({'name': name, 'author': author, 'read': False})
+    BOOKS.append({'name': name, 'author': author, 'read': False})
 
 
 def get_all_books():
     """List all books in the file."""
-    with open(BOOKS_FILE, 'r') as file:
-        lines = [line.strip().split(',') for line in file.readlines()]
-
-    return [{
-        'name': line[0],
-        'author': line[1],
-        'read': line[2]
-    } for line in lines]
-
-    # if not BOOKS:
-    #     print('No Stored Books...')
-    #
-    # for n, book in enumerate(BOOKS, 1):
-    #     state = 'YES' if book['read'] else 'NO'
-    #     print(
-    #         f"{[n]} - {book['name'].capitalize()}, by {book['author'].capitalize()} - Read: {state}"
-    #     )
+    for n, book in enumerate(BOOKS, 1):
+        state = 'YES' if book['read'] else 'NO'
+        print(
+            f"{[n]} - {book['name'].capitalize()}, by {book['author'].capitalize()} - Read: {state}"
+        )
 
 
 def change_to_read(name):
@@ -50,7 +36,7 @@ def change_to_read(name):
 
 
 def change_to_unread(name):
-    """Mark book as 'unread' in database."""
+    """Mark book as 'unread' in the list."""
     for book in BOOKS:
         if book['name'] == name:
             book['read'] = False

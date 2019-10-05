@@ -8,14 +8,13 @@
 [x]: Remove a book from the list
 [x]: Quit the program
 """
-from utils import database
+from utils import database_file as database
 
 USER_CHOICE = """
 Enter:
 ➤ 'a' or 'add' to add a new book
 ➤ 'l' or 'list' to list all books
 ➤ 'r' or 'read' to mark a book as read
-➤ 'u' or 'unread' to mark a book as unread
 ➤ 'd' or 'delete' to delete a book
 ➤ 'q' or 'quit' to quit
 
@@ -31,8 +30,6 @@ def menu():
             list_books()
         elif user_input == 'r' or user_input == 'read':
             mark_as_read()
-        elif user_input == 'u' or user_input == 'unread':
-            mark_as_unread()
         elif user_input == 'd' or user_input == 'delete':
             delete_book()
         else:
@@ -50,19 +47,13 @@ def add_book():
 
 def list_books():
     """Show all books in the database."""
-    database.get_all_books()
+    print(database.get_all_books())
 
 
 def mark_as_read():
     """Ask for book name and mark as 'read' in database."""
     name = input('Enter the name of finish reading book: ')
     database.change_to_read(name)
-
-
-def mark_as_unread():
-    """Ask for book name and mark as 'read' in database."""
-    name = input('Enter the name of unfinished reading book: ')
-    database.change_to_unread(name)
 
 
 def delete_book():
