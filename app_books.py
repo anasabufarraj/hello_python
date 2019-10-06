@@ -8,13 +8,13 @@
 [x]: Remove a book from the list
 [x]: Quit the program
 """
-from utils import database_file as database
+from utils import database_json as database
 
 USER_CHOICE = """
 Enter:
 ➤ 'a' or 'add' to add a new book
 ➤ 'l' or 'list' to list all books
-➤ 'r' or 'read' to mark a book as read
+➤ 'm' or 'mark' to mark a book as read
 ➤ 'd' or 'delete' to delete a book
 ➤ 'q' or 'quit' to quit
 
@@ -28,7 +28,7 @@ def menu():
             add_book()
         elif user_input == 'l' or user_input == 'list':
             list_books()
-        elif user_input == 'r' or user_input == 'read':
+        elif user_input == 'm' or user_input == 'mark':
             mark_as_read()
         elif user_input == 'd' or user_input == 'delete':
             delete_book()
@@ -49,7 +49,7 @@ def list_books():
     """Show all books in the database."""
     books = database.get_all_books()
     for n, book in enumerate(books, 1):
-        read = 'yes' if book['read'] == '1' else 'no'
+        read = 'yes' if book['read'] else 'no'
         print(
             f"{[n]} - {book['name'].capitalize()} by {book['author'].capitalize()} — Read: {read}"
         )

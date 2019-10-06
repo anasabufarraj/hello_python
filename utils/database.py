@@ -49,12 +49,11 @@ def remove_book(name):
     
     Using list comprehension to move each books to a new 
     list except the one match deletion.
+    It's a bad practice to remove items while iterating. For example:
+    
+    for book in BOOKS:
+         if book['name'] == name:
+             BOOKS.remove(book)
     """
     global BOOKS
     BOOKS = [book for book in BOOKS if book['name'] != name]
-
-    # Bad practice:
-    # To remove items while iterating:
-    # for book in BOOKS:
-    #     if book['name'] == name:
-    #         BOOKS.remove(book)

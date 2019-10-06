@@ -1,0 +1,27 @@
+[
+    {
+        "name": "book01",
+        "author": "author01",
+        "read": true
+    },
+    {
+        "name": "book02",
+        "author": "author02",
+        "read": false
+    },
+    {
+        "name": "book03",
+        "author": "author03",
+        "read": false
+    },
+    {
+        "name": "book04",
+        "author": "author04",
+        "read": false
+    },
+    {
+        "name": "book05",
+        "author": "author05",
+        "read": false
+    }
+]
