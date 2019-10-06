@@ -13,6 +13,8 @@ def add_book(name, author):
     
     :param author: author's name
     :type author: string
+
+    :return: None
     """
     with open(BOOKS_FILE, 'a') as file:
         file.write(f'{name},{author},0\n')

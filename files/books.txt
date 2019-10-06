@@ -1,6 +1,6 @@
 book01,author01,1
 book02,author02,0
 book03,author03,0
-book04,author04,1
+book04,author04,0
 book05,author05,0
 book06,author06,0

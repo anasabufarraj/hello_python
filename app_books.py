@@ -49,9 +49,9 @@ def list_books():
     """Show all books in the database."""
     books = database.get_all_books()
     for n, book in enumerate(books, 1):
-        state = 'YES' if book['read'] != '1' else 'NO'
+        read = 'yes' if book['read'] == '1' else 'no'
         print(
-            f"{[n]} - {book['name'].capitalize()} by {book['author'].capitalize()} — Read: {state}"
+            f"{[n]} - {book['name'].capitalize()} by {book['author'].capitalize()} — Read: {read}"
         )
 
 
