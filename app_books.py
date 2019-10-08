@@ -8,7 +8,7 @@
 [x]: Remove a book from the list
 [x]: Quit the program
 """
-from utils import database_json as database
+from utils import database_sql as database
 
 USER_CHOICE = """
 Enter:
@@ -22,6 +22,7 @@ Enter your choice and press ENTER: """
 
 
 def menu():
+    database.create_table()
     user_input = input(USER_CHOICE)
     while user_input != 'q' and user_input != 'quit':
         if user_input == 'a' or user_input == 'add':
