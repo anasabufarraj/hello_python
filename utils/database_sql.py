@@ -1,48 +1,50 @@
 #!./venv/bin/python3
 # Copyright 2019. Anas Abu Farraj
-"""Storing and retrieving books from a database."""
+"""Storing and retrieving books from database."""
 
 import sqlite3
 
-# BOOKS_FILE = 'files/books.json'
+
+def commit_and_close(connection):
+    connection.commit()
+    connection.close()
 
 
 def create_table():
-    """Create books table in the database."""
+    """Creates books table in the database."""
     connection = sqlite3.connect('data.db')
     cursor = connection.cursor()
+    cursor.execute(
+        'CREATE TABLE IF NOT EXISTS books(name text primary key, author text, read integer)'
+    )
 
-    try:
-        print('\nCreating Table...', end='')
-        cursor.execute(
-            'CREATE TABLE books(name text primary key, author text, read integer)'
-        )
-        connection.commit()
-        connection.close()
-    except sqlite3.OperationalError as error:
-        print(error)
+    commit_and_close(connection)
 
 
-# FIXME: change all functions
 def add_book(name, author):
-    """Append book with name and author to database.
+    """Add book with name and author to database.
 
-    Read all books from JSON and then save all books
-    to the database again.
-
-    :param name: book name
+    :param name: name of the book
     :type name: str
 
     :param author: author's name
     :type author: str
-
-    :return: None
+    
+    Note:
+    To avoid injection attack by using (?, ?),(name, author) syntax,
+    instead of ("{name}", "{author}").
+    For example:
+    If the attacker inserts ",0); DROP TABLE books; for 'author' parameter, 
+    this will Delete 'books' table entirely.
     """
-    books = get_all_books()
-    books.append({'name': name, 'author': author, 'read': False})
-    _write_all_books(books)
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
+    cursor.execute(f'INSERT INTO books VALUES(?, ?, 0)', (name, author))
+
+    commit_and_close(connection)
 
 
+# FIXME: change all functions to use sqlite3
 def get_all_books():
     """Load all books from the database.
 
