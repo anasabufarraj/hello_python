@@ -4,21 +4,22 @@
 
 import sqlite3
 
-
-def commit_and_close(connection):
-    connection.commit()
-    connection.close()
+DATABASE = 'data.db'
 
 
 def create_table():
-    """Creates books table in the database."""
-    connection = sqlite3.connect('data.db')
+    """Creates books table in the database.
+    
+    :return: None
+    """
+    connection = sqlite3.connect(DATABASE)
     cursor = connection.cursor()
     cursor.execute(
-        'CREATE TABLE IF NOT EXISTS books(name text primary key, author text, read integer)'
+        'CREATE TABLE IF NOT EXISTS books (name text primary key, author text, read integer)'
     )
 
-    commit_and_close(connection)
+    connection.commit()
+    connection.close()
 
 
 def add_book(name, author):
@@ -30,6 +31,8 @@ def add_book(name, author):
     :param author: author's name
     :type author: str
     
+    :return: None
+    
     Note:
     To avoid injection attack by using (?, ?),(name, author) syntax,
     instead of ("{name}", "{author}").
@@ -37,58 +40,60 @@ def add_book(name, author):
     If the attacker inserts ",0); DROP TABLE books; for 'author' parameter, 
     this will Delete 'books' table entirely.
     """
-    connection = sqlite3.connect('data.db')
+    connection = sqlite3.connect(DATABASE)
     cursor = connection.cursor()
-    cursor.execute(f'INSERT INTO books VALUES(?, ?, 0)', (name, author))
+    cursor.execute('INSERT INTO books VALUES (?, ?, 0)', (name, author))
 
-    commit_and_close(connection)
+    connection.commit()
+    connection.close()
 
 
-# FIXME: change all functions to use sqlite3
 def get_all_books():
     """Load all books from the database.
-
-    :return: json file
-    :rtype: list of dictionaries
+    
+    Storing fetched data in variable as list comprehension,
+    while each row in database is a tuple,
+    i.e. [(name, author, read), (name, author, read)...]
+    
+    :return: list of dictionaries
+    :rtype: list
     """
-    with open(BOOKS_FILE, 'r') as file:
-        return json.load(file)
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM books')
+    rows = [{
+        'name': row[0],
+        'author': row[1],
+        'read': row[2]
+    } for row in cursor.fetchall()]
 
+    connection.close()
 
-def _write_all_books(books):
-    """Write all books to database.
-
-    :parameter books: list of dictionaries
-    :type books: list
-
-    :return: None
-
-    NOTE:
-    This function is private and should not be called
-    outside this module.
-    """
-    with open(BOOKS_FILE, 'w') as file:
-        json.dump(books, file, indent=4)
+    return rows
 
 
 def change_to_read(name):
-    """Change matched book to read ('1').
+    """Change matched book name to read ('1').
 
-    Read all books and mark the matched book with '1' instead of '0'
-    and then save all books to the database again.
-    It's a bad practice to change date while iterating.
+    Select all books and set only the matched name
+    read value to '1' instead of '0'.
 
     :parameter name: name of the book
     :type name: str
-
+    
     :return: None
+    
+    Important:
+    even if you have a single parameters in the query, it must be
+    explicitly declared in tuple, otherwise a programmatic error
+    will be thrown, i.e. (name, ).
     """
-    books = get_all_books()
-    for book in books:
-        if book['name'] == name:
-            book['read'] = True
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+    cursor.execute('UPDATE books SET read = 1 WHERE name = ?', (name, ))
 
-    _write_all_books(books)
+    connection.commit()
+    connection.close()
 
 
 def remove_book(name):
@@ -101,6 +106,9 @@ def remove_book(name):
 
     :return: None
     """
-    books = get_all_books()
-    books = [book for book in books if book['name'] != name]
-    _write_all_books(books)
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+    cursor.execute('DELETE FROM books WHERE name=?', (name, ))
+
+    connection.commit()
+    connection.close()
