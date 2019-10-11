@@ -42,10 +42,13 @@ def add_book(name, author):
     """
     connection = sqlite3.connect(DATABASE)
     cursor = connection.cursor()
-    cursor.execute('INSERT INTO books VALUES (?, ?, 0)', (name, author))
-
-    connection.commit()
-    connection.close()
+    try:
+        cursor.execute('INSERT INTO books VALUES (?, ?, 0)', (name, author))
+    except sqlite3.IntegrityError:
+        print('Book already exists!')
+    finally:
+        connection.commit()
+        connection.close()
 
 
 def get_all_books():
@@ -88,6 +91,7 @@ def change_to_read(name):
     explicitly declared in tuple, otherwise a programmatic error
     will be thrown, i.e. (name, ).
     """
+    # TODO: send a message to the user when the book he want to update is not exists.
     connection = sqlite3.connect(DATABASE)
     cursor = connection.cursor()
     cursor.execute('UPDATE books SET read = 1 WHERE name = ?', (name, ))
@@ -106,8 +110,10 @@ def remove_book(name):
 
     :return: None
     """
+    # TODO: send a message to the user when the book he wants to delete is not exists.
     connection = sqlite3.connect(DATABASE)
     cursor = connection.cursor()
+
     cursor.execute('DELETE FROM books WHERE name=?', (name, ))
 
     connection.commit()

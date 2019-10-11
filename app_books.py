@@ -2,6 +2,11 @@
 # Copyright 2019. Anas Abu Farraj
 """Book store app.
 
+Separating the business logic from the data storage:
+1) Business logic: 'app_books' module
+2) Data storage: 'database_sql' module
+
+Checklist:
 [x]: Add books with book name and author to database.
 [x]: Show all books in the database.
 [x]: Mark a book as 'read'.
@@ -42,7 +47,7 @@ def menu():
 def add_book():
     """Ask for book name and author and add to database."""
     name = input('New Book name: ')
-    author = input('Enter Author\'s name: ')
+    author = input('New Author\'s name: ')
     database.add_book(name, author)
 
 
@@ -56,7 +61,7 @@ def list_books():
 
 def mark_as_read():
     """Ask for book name and mark as 'read' in database."""
-    name = input('Enter the name of finish reading book: ')
+    name = input('Enter read book: ')
     database.change_to_read(name)
 
 
