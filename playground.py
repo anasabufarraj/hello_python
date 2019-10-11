@@ -2,20 +2,7 @@
 # Copyright 2019. Anas Abu Farraj
 # Learning Python
 
-import sqlite3
+users = {1: "Alice", 2: "Bob", 3: "Dilbert"}
 
-connection = sqlite3.connect('data.sqlite')
-cursor = connection.cursor()
-cursor.execute('SELECT * FROM books')
-
-row1 = cursor.fetchmany(1)
-row2 = cursor.fetchmany(1)
-row3 = cursor.fetchmany(1)
-
-connection.close()
-
-print(row1)
-print(row2)
-print(row3)
-
-# ('The Pragmatic Programmer', 'Andy Hunt', 0)
+print(f"Hi {users.get(1, 'there')}!")  # Hi Alice!
+print(f"Hi {users.get(4, 'there')}!")  # Hi there!

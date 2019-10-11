@@ -1,4 +1,5 @@
 #!./venv/bin/python3.7
+# app_books.py
 # Copyright 2019. Anas Abu Farraj
 """Book store app.
 
@@ -13,7 +14,7 @@ Checklist:
 [x]: Remove a book from the list
 [x]: Quit the program
 """
-from utils import database_sql as database
+from utils import database
 
 USER_CHOICE = """
 Enter:
