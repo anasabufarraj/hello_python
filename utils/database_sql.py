@@ -4,7 +4,7 @@
 
 import sqlite3
 
-DATABASE = 'data.db'
+DATABASE = 'data.sqlite'
 
 
 def create_table():
@@ -84,7 +84,7 @@ def change_to_read(name):
     :return: None
     
     Important:
-    even if you have a single parameters in the query, it must be
+    Even if you have a single parameters in the query, it must be
     explicitly declared in tuple, otherwise a programmatic error
     will be thrown, i.e. (name, ).
     """

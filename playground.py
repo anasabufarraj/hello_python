@@ -4,7 +4,7 @@
 
 import sqlite3
 
-connection = sqlite3.connect('data.db')
+connection = sqlite3.connect('data.sqlite')
 cursor = connection.cursor()
 cursor.execute('SELECT * FROM books')
 
