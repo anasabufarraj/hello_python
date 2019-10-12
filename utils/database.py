@@ -4,7 +4,7 @@
 """Storing and retrieving books from database."""
 
 import sqlite3
-from .database_connection import DatabaseConnection
+from utils.database_connection import DatabaseConnection
 
 
 def create_table():
