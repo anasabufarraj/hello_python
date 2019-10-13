@@ -11,7 +11,7 @@ class DatabaseConnection:
         self._host = host
         self._connection = sqlite3.connect('data.sqlite')
 
-    def __enter__(self):
+    def __enter__(self) -> sqlite3.Connection:
         """Enter point: remains a connection with database while managing."""
         return self._connection
 

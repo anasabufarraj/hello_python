@@ -28,6 +28,7 @@ Enter your choice and press ENTER: """
 
 
 def menu():
+    """Starts the user interface main menu."""
     database.create_table()
     user_input = input(USER_CHOICE)
     while user_input != 'q' and user_input != 'quit':

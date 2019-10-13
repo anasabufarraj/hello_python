@@ -4,14 +4,13 @@
 """Storing and retrieving books from database."""
 
 import sqlite3
+
 from utils.database_connection import DatabaseConnection
+from typing import List, Dict, Union
 
 
-def create_table():
-    """Creates books table in the database.
-    
-    :return: None
-    """
+def create_table() -> None:
+    """Creates books table in the database."""
     with DatabaseConnection('data.sqlite') as connection:
         cursor = connection.cursor()
         cursor.execute(
@@ -19,16 +18,11 @@ def create_table():
         )
 
 
-def add_book(name, author):
+def add_book(name: str, author: str) -> None:
     """Add book with name and author to database.
     
-    :param name: name of the book
-    :type name: str
-    
+    :param name: name of the book    
     :param author: author's name
-    :type author: str
-    
-    :return: None
     
     Note:
     To avoid injection attack by using (?, ?),(name, author) syntax,
@@ -45,15 +39,12 @@ def add_book(name, author):
             print('Book already exists!')
 
 
-def get_all_books():
+def get_all_books() -> List[Dict[str, Union[str, int]]]:
     """Load all books from the database
     
     Storing fetched data in variable as list comprehension,
     while each row in database is a tuple,
     i.e. [(name, author, read), (name, author, read)...]
-    
-    :return: list of dictionaries
-    :rtype: list
     """
     with DatabaseConnection('data.sqlite') as connection:
         cursor = connection.cursor()
@@ -67,16 +58,13 @@ def get_all_books():
         return rows
 
 
-def change_to_read(name):
+def change_to_read(name: str) -> None:
     """Change matched book name to read ('1').
     
     Select all books and set only the matched name
     read value to '1' instead of '0'.
 
     :parameter name: name of the book
-    :type name: str
-    
-    :return: None
     
     Important:
     Even if you have a single parameters in the query, it must be
@@ -89,15 +77,10 @@ def change_to_read(name):
         cursor.execute('UPDATE books SET read = 1 WHERE name = ?', (name, ))
 
 
-def remove_book(name):
+def remove_book(name: str) -> None:
     """Remove book from the database.
-    
-    Read all books, rewrite the database without the matched book.
-    
+        
     :parameter name: name of the book
-    :type name: str
-    
-    :return: None
     """
     # TODO: send a message to the user when the book he wants to delete is not exists.
     with DatabaseConnection('data.sqlite') as connection:
