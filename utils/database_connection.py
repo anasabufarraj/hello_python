@@ -7,7 +7,7 @@ import sqlite3
 
 
 class DatabaseConnection:
-    def __init__(self, host):
+    def __init__(self, host) -> None:
         self._host = host
         self._connection = sqlite3.connect('data.sqlite')
 
@@ -15,7 +15,7 @@ class DatabaseConnection:
         """Enter point: remains a connection with database while managing."""
         return self._connection
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self, exc_type, exc_val, exc_tb) -> None:
         """Exit point: commit and disconnect with database.
         
         If any type exception, value exception, or traceback exception happen,

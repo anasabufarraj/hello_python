@@ -14,7 +14,7 @@ def create_table() -> None:
     with DatabaseConnection('data.sqlite') as connection:
         cursor = connection.cursor()
         cursor.execute(
-            'CREATE TABLE IF NOT EXISTS books (name text primary key, author text, read integer)'
+            'CREATE TABLE IF NOT EXISTS books (name TEXT PRIMARY KEY, author TEXT, read INTEGER)'
         )
 
 

@@ -2,4 +2,14 @@
 # Copyright 2019. Anas Abu Farraj
 # Learning Python
 
-print('{:06.2f}'.format(2))
+
+def words_starts_with_p(word):
+    """Function that returns True."""
+    return word.startswith('p')
+
+
+items = 'apple', 'orange', 'pear', 'pineapple', 'banana'
+words_iterator = filter(words_starts_with_p, items)
+
+for n in words_iterator:
+    print(n)
