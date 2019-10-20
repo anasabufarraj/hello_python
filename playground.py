@@ -2,14 +2,16 @@
 # Copyright 2019. Anas Abu Farraj
 # Learning Python
 
+import pymysql
 
-def words_starts_with_p(word):
-    """Function that returns True."""
-    return word.startswith('p')
+connection = pymysql.connect(host='localhost',
+                             user='root',
+                             password='password',
+                             db='data_source')
+cursor = connection.cursor()
+cursor.execute("SELECT * FROM ca_pop WHERE year LIKE '%19' LIMIT 12")
 
+data_list = cursor.fetchall()
 
-items = 'apple', 'orange', 'pear', 'pineapple', 'banana'
-words_iterator = filter(words_starts_with_p, items)
-
-for n in words_iterator:
-    print(n)
+for row in data_list:
+    print(row)
