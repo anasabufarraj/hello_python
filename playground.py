@@ -5,13 +5,19 @@
 import pymysql
 
 connection = pymysql.connect(host='localhost',
+                             db='data_source',
                              user='root',
-                             password='password',
-                             db='data_source')
+                             password='password')
 cursor = connection.cursor()
-cursor.execute("SELECT * FROM ca_pop WHERE year LIKE '%19' LIMIT 12")
+cursor.execute('SELECT * FROM ca_pop WHERE year LIKE "%19" LIMIT 12')
 
-data_list = cursor.fetchall()
+rows = cursor.fetchall()  # Tuple of tuples
+connection.close()
 
-for row in data_list:
-    print(row)
+
+def func():
+    for row in rows:
+        print(row)
+
+
+func()

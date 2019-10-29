@@ -1,7 +1,7 @@
 #!./venv/bin/python3
 # utils/database.py
 # Copyright 2019. Anas Abu Farraj
-"""Storing and retrieving books from database."""
+"""Storing and retrieving books from SQLite database."""
 
 import sqlite3
 
@@ -14,7 +14,7 @@ def create_table() -> None:
     with DatabaseConnection('data.sqlite') as connection:
         cursor = connection.cursor()
         cursor.execute(
-            'CREATE TABLE IF NOT EXISTS books (name TEXT PRIMARY KEY, author TEXT, read INTEGER)'
+            'CREATE TABLE IF NOT EXISTS books ( name TEXT PRIMARY KEY, author TEXT, read INTEGER )'
         )
 
 
@@ -33,7 +33,7 @@ def add_book(name: str, author: str) -> None:
     with DatabaseConnection('data.sqlite') as connection:
         cursor = connection.cursor()
         try:
-            cursor.execute('INSERT INTO books VALUES (?, ?, 0)',
+            cursor.execute('INSERT INTO books VALUES ( ?, ?, 0 )',
                            (name, author))
         except sqlite3.IntegrityError:
             print('Book already exists!')
@@ -49,6 +49,7 @@ def get_all_books() -> List[Dict[str, Union[str, int]]]:
     with DatabaseConnection('data.sqlite') as connection:
         cursor = connection.cursor()
         cursor.execute('SELECT * FROM books ORDER BY name')
+
         rows = [{
             'name': row[0],
             'author': row[1],
@@ -71,7 +72,7 @@ def change_to_read(name: str) -> None:
     explicitly declared in tuple, otherwise a programmatic error
     will be thrown, i.e. (name, ).
     """
-    # TODO: send a message to the user when the book he want to update is not exists.
+    # TODO: send a message to the user if the book to update is not exists.
     with DatabaseConnection('data.sqlite') as connection:
         cursor = connection.cursor()
         cursor.execute('UPDATE books SET read = 1 WHERE name = ?', (name, ))
@@ -82,7 +83,7 @@ def remove_book(name: str) -> None:
         
     :parameter name: name of the book
     """
-    # TODO: send a message to the user when the book he wants to delete is not exists.
+    # TODO: send a message to the user if the book to delete is not exists.
     with DatabaseConnection('data.sqlite') as connection:
         cursor = connection.cursor()
-        cursor.execute('DELETE FROM books WHERE name=?', (name, ))
+        cursor.execute('DELETE FROM books WHERE name = ?', (name, ))
