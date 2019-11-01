@@ -16,7 +16,7 @@ Checklist:
 """
 from utils import database
 
-USER_CHOICE = """
+USER_CHOICE = '''
 Enter:
 ➤ 'a' or 'add' to add a new book
 ➤ 'l' or 'list' to list all books
@@ -24,7 +24,7 @@ Enter:
 ➤ 'd' or 'delete' to delete a book
 ➤ 'q' or 'quit' to quit
 
-Enter your choice and press ENTER: """
+Enter your choice and press ENTER: '''
 
 
 def menu():

@@ -2,22 +2,9 @@
 # Copyright 2019. Anas Abu Farraj
 # Learning Python
 
-import pymysql
+from collections import ChainMap
 
-connection = pymysql.connect(host='localhost',
-                             db='data_source',
-                             user='root',
-                             password='password')
-cursor = connection.cursor()
-cursor.execute('SELECT * FROM ca_pop WHERE year LIKE "%19" LIMIT 12')
+baseline = {'music': 'bach', 'art': 'rembrandt'}
+adjustments = {'art': 'van gogh', 'opera': 'carmen'}
 
-rows = cursor.fetchall()  # Tuple of tuples
-connection.close()
-
-
-def func():
-    for row in rows:
-        print(row)
-
-
-func()
+print(list(ChainMap(adjustments, baseline)))
