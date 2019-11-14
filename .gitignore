@@ -1,8 +1,12 @@
 # Created by .ignore support plugin (hsz.mobi)
-/.idea
-/.vscode
-/.mypy_cache
-/venv
+
+# Directories
+.idea/
+.vscode/
+.mypy_cache/
 .DS_Store
+__pycache__/
+venv/
+
+# FIles
 hello_python.iml
-__pycache__

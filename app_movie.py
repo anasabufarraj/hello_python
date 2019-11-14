@@ -1,5 +1,5 @@
 #!./venv/bin/python3.7
-# Copyright 2019. Anas Abu Farraj
+# © Anas Abu Farraj
 """Movie Name Manager app
 
 Enter 'a' to add movie, 'l' to list movie, 'f' to find movie, and 'q' to quit.

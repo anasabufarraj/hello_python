@@ -1,5 +1,6 @@
 #!./venv/bin/python3.7
-# Copyright 2019. Anas Abu Farraj
+# © Anas Abu Farraj
+"""Snake game app"""
 
 import tkinter as tk
 from random import randint
@@ -15,7 +16,10 @@ GAME_SPEED = 1000 // MOVE_PER_SECOND
 
 class Snake(tk.Canvas):
     def __init__(self):
-        super().__init__(width=PLAYGROUND_WIDTH, height=PLAYGROUND_HEIGHT, background='black', highlightthickness=0)
+        super().__init__(width=PLAYGROUND_WIDTH,
+                         height=PLAYGROUND_HEIGHT,
+                         background='black',
+                         highlightthickness=0)
 
         self.snake_positions = [(100, 100), (80, 100), (60, 100)]
         self.food_position = self.set_new_food_position()
@@ -43,26 +47,41 @@ class Snake(tk.Canvas):
             root.destroy()
 
     def create_objects(self):
-        self.create_text(35, 12, text=f'Score: {self.score}', tag='score', fill='#fff', font=14)
+        self.create_text(35,
+                         12,
+                         text=f'Score: {self.score}',
+                         tag='score',
+                         fill='#fff',
+                         font=14)
 
         for x_position, y_position in self.snake_positions:
-            self.create_image(x_position, y_position, image=self.snake_body, tag='snake')
+            self.create_image(x_position,
+                              y_position,
+                              image=self.snake_body,
+                              tag='snake')
 
         self.create_image(*self.food_position, image=self.food, tag='food')
-        self.create_rectangle(0, 27, PLAYGROUND_WIDTH, PLAYGROUND_HEIGHT, outline='#000')
+        self.create_rectangle(0,
+                              27,
+                              PLAYGROUND_WIDTH,
+                              PLAYGROUND_HEIGHT,
+                              outline='#000')
 
     def check_collisions(self):
         head_x_position, head_y_position = self.snake_positions[0]
 
-        return (head_x_position in (0, PLAYGROUND_WIDTH) or head_y_position in (20, PLAYGROUND_HEIGHT)
-                or (head_x_position, head_y_position) in self.snake_positions[1:])
+        return (head_x_position in (0, PLAYGROUND_WIDTH)
+                or head_y_position in (20, PLAYGROUND_HEIGHT) or
+                (head_x_position, head_y_position) in self.snake_positions[1:])
 
     def check_food_collision(self):
         if self.snake_positions[0] == self.food_position:
             self.score += 1
             self.snake_positions.append(self.snake_positions[-1])
 
-            self.create_image(*self.snake_positions[-1], image=self.snake_body, tag='snake')
+            self.create_image(*self.snake_positions[-1],
+                              image=self.snake_body,
+                              tag='snake')
             self.food_position = self.set_new_food_position()
             self.coords(self.find_withtag('food'), *self.food_position)
 
@@ -86,17 +105,22 @@ class Snake(tk.Canvas):
         head_x_position, head_y_position = self.snake_positions[0]
 
         if self.direction == 'Left':
-            new_head_position = (head_x_position - MOVE_INCREMENT, head_y_position)
+            new_head_position = (head_x_position - MOVE_INCREMENT,
+                                 head_y_position)
         elif self.direction == 'Right':
-            new_head_position = (head_x_position + MOVE_INCREMENT, head_y_position)
+            new_head_position = (head_x_position + MOVE_INCREMENT,
+                                 head_y_position)
         elif self.direction == 'Down':
-            new_head_position = (head_x_position, head_y_position + MOVE_INCREMENT)
+            new_head_position = (head_x_position,
+                                 head_y_position + MOVE_INCREMENT)
         elif self.direction == 'Up':
-            new_head_position = (head_x_position, head_y_position - MOVE_INCREMENT)
+            new_head_position = (head_x_position,
+                                 head_y_position - MOVE_INCREMENT)
 
         self.snake_positions = [new_head_position] + self.snake_positions[:-1]
 
-        for segment, position in zip(self.find_withtag('snake'), self.snake_positions):
+        for segment, position in zip(self.find_withtag('snake'),
+                                     self.snake_positions):
             self.coords(segment, position)
 
     def on_key_press(self, e):
@@ -105,7 +129,8 @@ class Snake(tk.Canvas):
         all_directions = ('Up', 'Down', 'Left', 'Right')
         opposites = ({'Up', 'Down'}, {'Left', 'Right'})
 
-        if new_direction in all_directions and {new_direction, self.direction} not in opposites:
+        if new_direction in all_directions and {new_direction, self.direction
+                                                } not in opposites:
             self.direction = new_direction
 
     def perform_actions(self):

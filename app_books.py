@@ -1,6 +1,5 @@
 #!./venv/bin/python3.7
-# app_books.py
-# Copyright 2019. Anas Abu Farraj
+# © Anas Abu Farraj
 """Book store app.
 
 Separating the business logic from the data storage:
@@ -14,6 +13,7 @@ Checklist:
 [x]: Remove a book from the list
 [x]: Quit the program
 """
+
 from utils import database
 
 USER_CHOICE = '''
@@ -31,14 +31,15 @@ def menu():
     """Starts the user interface main menu."""
     database.create_table()
     user_input = input(USER_CHOICE)
-    while user_input != 'q' and user_input != 'quit':
-        if user_input == 'a' or user_input == 'add':
+
+    while user_input not in ('q', 'quit'):
+        if user_input in ('a', 'add'):
             add_book()
-        elif user_input == 'l' or user_input == 'list':
+        elif user_input in ('l', 'list'):
             list_books()
-        elif user_input == 'm' or user_input == 'mark':
+        elif user_input in ('m', 'mark'):
             mark_as_read()
-        elif user_input == 'd' or user_input == 'delete':
+        elif user_input in ('d', 'delete'):
             delete_book()
         else:
             print('Unknown option. Please try again: ')
@@ -56,9 +57,10 @@ def add_book():
 def list_books():
     """List all books in the database."""
     books = database.get_all_books()
-    for n, book in enumerate(books, 1):
+
+    for number, book in enumerate(books, 1):
         read = 'yes' if book['read'] else 'no'
-        print(f"{[n]} - {book['name']} by {book['author']} — Read: {read}")
+        print(f"{[number]} - {book['name']} by {book['author']} — Read: {read}")
 
 
 def mark_as_read():
