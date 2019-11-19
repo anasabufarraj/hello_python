@@ -1,5 +1,7 @@
 #!./venv/bin/python3.7
-# © Anas Abu Farraj
+# ------------------------------------------------------------------------------
+#  Copyright (c) 2019. Anas Abu Farraj
+# ------------------------------------------------------------------------------
 """Book store app.
 
 Separating the business logic from the data storage:

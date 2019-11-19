@@ -1,6 +1,8 @@
 #!./venv/bin/python3
 # utils/database_csv.py
-# Copyright 2019. Anas Abu Farraj
+# ------------------------------------------------------------------------------
+#  Copyright (c) 2019. Anas Abu Farraj
+# ------------------------------------------------------------------------------
 """Storing and retrieving books from a file."""
 
 BOOKS_FILE = 'files/books.csv'
@@ -30,11 +32,7 @@ def get_all_books():
     with open(BOOKS_FILE, 'r') as file:
         lines = [line.strip().split(',') for line in file.readlines()]
 
-    return [{
-        'name': line[0],
-        'author': line[1],
-        'read': line[2]
-    } for line in lines]
+    return [{'name': line[0], 'author': line[1], 'read': line[2]} for line in lines]
 
 
 def _write_all_books(books):

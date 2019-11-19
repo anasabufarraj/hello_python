@@ -1,6 +1,8 @@
 #!./venv/bin/python3
 # utils/database.py
-# Copyright 2019. Anas Abu Farraj
+# ------------------------------------------------------------------------------
+#  Copyright (c) 2019. Anas Abu Farraj
+# ------------------------------------------------------------------------------
 """Storing and retrieving books from SQLite database."""
 
 import sqlite3
@@ -33,8 +35,7 @@ def add_book(name: str, author: str) -> None:
     with DatabaseConnection('data.sqlite') as connection:
         cursor = connection.cursor()
         try:
-            cursor.execute('INSERT INTO books VALUES ( ?, ?, 0 )',
-                           (name, author))
+            cursor.execute('INSERT INTO books VALUES ( ?, ?, 0 )', (name, author))
         except sqlite3.IntegrityError:
             print('Book already exists!')
 

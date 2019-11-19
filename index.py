@@ -1,6 +1,8 @@
 #!./venv/bin/python3.7
-# Copyright 2019. Anas Abu Farraj
-# Learning BeautifulSoup
+# ------------------------------------------------------------------------------
+#  Copyright (c) 2019. Anas Abu Farraj
+# ------------------------------------------------------------------------------
+"""Learning BeautifulSoup"""
 
 from bs4 import BeautifulSoup
 

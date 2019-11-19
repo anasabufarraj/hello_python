@@ -1,6 +1,8 @@
 #!./venv/bin/python3
 # utils/database_json.py
-# Copyright 2019. Anas Abu Farraj
+# ------------------------------------------------------------------------------
+#  Copyright (c) 2019. Anas Abu Farraj
+# ------------------------------------------------------------------------------
 """Storing and retrieving books from a JSON file."""
 
 import json

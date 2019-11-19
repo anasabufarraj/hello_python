@@ -1,5 +1,7 @@
 #!./venv/bin/python3.7
-# © Anas Abu Farraj
+# ------------------------------------------------------------------------------
+#  Copyright (c) 2019. Anas Abu Farraj
+# ------------------------------------------------------------------------------
 """Movie Name Manager app
 
 Enter 'a' to add movie, 'l' to list movie, 'f' to find movie, and 'q' to quit.
@@ -45,11 +47,7 @@ def add_movie():
     movie_name = input('Enter movie name: ')
     movie_director = input('Enter director: ')
     movie_year = input('Enter movie year: ')
-    MOVIES.append({
-        'name': movie_name,
-        'director': movie_director,
-        'year': movie_year
-    })
+    MOVIES.append({'name': movie_name, 'director': movie_director, 'year': movie_year})
 
 
 def list_movie():
@@ -58,9 +56,7 @@ def list_movie():
         print('No stored movies yet')
 
     for movie in MOVIES:
-        print(
-            f"{movie['name']} ({movie['year']}) - Director by '{movie['director']}'"
-        )
+        print(f"{movie['name']} ({movie['year']}) - Director by '{movie['director']}'")
 
 
 def find_movie():
@@ -68,14 +64,12 @@ def find_movie():
     keyword = input('Enter the movie detail: ').casefold()
     for movie in MOVIES:
         found = [
-            keyword in movie['name'].casefold(),
-            keyword in movie['director'].casefold(),
+            keyword in movie['name'].casefold(), keyword in movie['director'].casefold(),
             keyword in movie['year'].casefold()
         ]
         if any(found):
             print(
-                f"{movie['name']} ({movie['year']}) - Director by '{movie['director']}'"
-            )
+                f"{movie['name']} ({movie['year']}) - Director by '{movie['director']}'")
     print('Not found')
 
 
