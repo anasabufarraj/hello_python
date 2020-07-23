@@ -1,4 +1,4 @@
-#!./venv/bin/python3
+#!./venv/bin/python
 # utils/database_csv.py
 # ------------------------------------------------------------------------------
 #  Copyright (c) 2019. Anas Abu Farraj

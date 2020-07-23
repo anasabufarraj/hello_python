@@ -1,8 +1,10 @@
-#!./venv/bin/python3.7
+#!./venv/bin/python
 # ------------------------------------------------------------------------------
 #  Copyright (c) 2019. Anas Abu Farraj
 # ------------------------------------------------------------------------------
 """Learning Python."""
 
-print('Python' [-1])  # n
-print('Python' [:-1])  # Pytho
+
+def add_one(number):
+    number += 1
+    return number

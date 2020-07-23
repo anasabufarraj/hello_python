@@ -1,4 +1,4 @@
-#!./venv/bin/python3.7
+#!./venv/bin/python
 # utils/mailgun.py
 # ------------------------------------------------------------------------------
 #  Copyright (c) 2019. Anas Abu Farraj

@@ -1,8 +1,9 @@
-#!./venv/bin/python3
+#!./venv/bin/python
 # utils/database_connection.py
 # ------------------------------------------------------------------------------
 #  Copyright (c) 2019. Anas Abu Farraj
-# ------------------------------------------------------------------------------"""A context manager to handle database connection."""
+# ------------------------------------------------------------------------------
+"""A context manager to handle database connection."""
 
 import sqlite3
 
