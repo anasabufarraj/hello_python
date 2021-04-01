@@ -8,3 +8,6 @@
 def add_one(number):
     number += 1
     return number
+
+
+print(add_one(20))
