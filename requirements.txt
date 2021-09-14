@@ -1,9 +1,10 @@
-astroid==2.5.2
-beautifulsoup4==4.9.3
-isort==5.8.0
+astroid==2.7.3
+beautifulsoup4==4.10.0
+isort==5.9.3
 lazy-object-proxy==1.6.0
 mccabe==0.6.1
-pylint==2.7.4
+platformdirs==2.3.0
+pylint==2.10.2
 soupsieve==2.2.1
 toml==0.10.2
 wrapt==1.12.1
