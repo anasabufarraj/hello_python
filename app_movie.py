@@ -7,13 +7,13 @@
 Enter 'a' to add movie, 'l' to list movie, 'f' to find movie, and 'q' to quit.
 
 Tasks:
-[x]: Decide where to store movies
-[x]: What is the format of a movie?
-[x]: Show a user interface and get user input
-[x]: Allow user to add movies
-[x]: List all movies to user
-[x]: Find a movie
-[x]: Allow the user to stop running the program
+TODO [x]: Decide where to store movies
+TODO [x]: What is the format of a movie?
+TODO [x]: Show a user interface and get user input
+TODO [x]: Allow user to add movies
+TODO [x]: List all movies to user
+TODO [x]: Find a movie
+TODO [x]: Allow the user to stop running the program
 
 """
 
