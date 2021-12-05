@@ -14,7 +14,6 @@ TODO [x]: Allow user to add movies
 TODO [x]: List all movies to user
 TODO [x]: Find a movie
 TODO [x]: Allow the user to stop running the program
-
 """
 
 
